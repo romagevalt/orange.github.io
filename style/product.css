@@ -1,0 +1,260 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: Hack, monospace;
+  margin: 0;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.5%;
+}
+
+header img {
+  top: 3.5%;
+  left: 2%;
+  width: 16%;
+  height: auto;
+}
+
+nav .menuItems {
+  list-style: none;
+  display: flex;
+}
+
+nav .menuItems li {
+  margin: 0 1em;
+}
+
+nav .menuItems li a {
+  text-decoration: none;
+  color: #00000085;
+  font-size: 125%;
+  font-weight: 600;
+  transition: all 0.5s ease-in-out;
+  position: relative;
+  text-transform: uppercase;
+}
+
+nav .menuItems li a::before {
+  content: attr(data-item);
+  transition: 0.5s;
+  color: #000000;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 0;
+  overflow: hidden;
+}
+
+nav .menuItems li a:hover::before {
+  width: 100%;
+  transition: all 0.5s ease-in-out;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5.2%;
+  flex-grow: 1;
+}
+
+h1 {
+  font-family: "Roboto", sans-serif;
+  font-size: 4em;
+  font-weight: bold;
+  text-align: center;
+  transition: color 0.3s ease;
+  margin-bottom: 0%;
+}
+
+h1:hover {
+  color: #ff4800;
+}
+
+h2 {
+  font-family: "Roboto", sans-serif;
+  font-size: 125%;
+  font-weight: 120;
+  text-align: center;
+  margin-bottom: 3%;
+}
+
+.styled-text-box {
+  background-color: transparent;
+  border: 0.5em solid #ccc;
+  padding: 3em;
+  border-radius: 0.2em;
+  font-family: "Roboto", sans-serif;
+  line-height: 1.6;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+  font-size: 125%;
+  max-width: 800px;
+  margin: 5% auto;
+  text-align: left;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.styled-text-box:hover {
+  transform: translateY(-5%);
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0,2);
+}
+
+
+.styled-text-box a {
+
+  text-decoration: none;
+  color: #000000; /* Цвет ссылки */
+  transition: color 0.3s ease; /* Плавное изменение цвета */
+}
+
+
+
+.styled-text-box a:hover {
+  color: #ff4800; /* Цвет ссылки при наведении */
+}
+
+.styled-text-box a::after {
+  transform: scaleX(1); /* Показываем подчёркивание */
+  background-color: #ff4800; /* Цвет подчёркивания при наведении */
+}
+
+h3 {
+  padding: 5% 0 0% 0;
+}
+
+h4 {
+  padding: 10px 0 20px 0;
+  font-weight: 100;
+}
+
+.kaufen-link {
+  position: absolute;
+  bottom: 500px;
+  right: 20px;
+  text-decoration: none;
+  background-color: #ff4800;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+
+}
+
+.kaufen-link:hover {
+  background-color: #ff6a00;
+}
+
+.shelf {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: #ddd;
+  border-bottom: 2px solid #aaa;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.image-container {
+  margin: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 5px;
+  transition: transform 0.3s ease-in-out;
+  position: relative;
+}
+
+.image-container:hover {
+  transform: scale(1.05);
+}
+
+.shelf img {
+  display: block;
+  width: 150px;
+  height: auto;
+}
+
+#fullscreen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0s linear 0.3s;
+}
+
+#fullscreen-overlay.open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease-in-out, visibility 0s linear 0s;
+}
+
+#fullscreen-image {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  transform: scale(0.5);
+  transition: transform 0.3s ease-in-out;
+}
+
+#fullscreen-overlay.open #fullscreen-image {
+  transform: scale(1);
+}
+
+.hidden {
+  display: none;
+}
+
+.image-title {
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  text-align: center;
+  padding: 5px 0;
+  font-size: 0.9em;
+  opacity: 0;
+  transform: translateY(10px) scale(0.95); /* Начальное положение и масштаб */
+  transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease-in-out, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Добавили transform и изменили timing-function */
+}
+
+.image-container:hover .image-title {
+  bottom: 0;
+  opacity: 1;
+  transform: translateY(0) scale(1); /* Конечное положение и масштаб */
+}
+
+#close-fullscreen-btn {
+  position: absolute; /* Чтобы она была поверх всего и ее можно было двигать куда захочешь */
+  top: 20px; /* Отступ от верхнего края */
+  right: 30px; /* Отступ от правого края */
+  background: none; /* Убираем фон кнопки */
+  border: none; /* Убираем рамку */
+  color: white; /* Цвет текста (крестика) белый */
+  font-size: 2em; /* Размер шрифта (крестика) */
+  cursor: pointer; /* Курсор меняется на "руку" при наведении */
+  z-index: 1001; /* Делаем кнопку поверх картинки */
+  opacity: 0.8; /* Немного прозрачная изначально */
+  transition: opacity 0.2s ease-in-out; /* Плавное появление/исчезновение при наведении */
+}
+
+#close-fullscreen-btn:hover {
+  opacity: 1; /* Делаем кнопку полностью непрозрачной при наведении */
+}

@@ -1,0 +1,150 @@
+h1 {
+    font-family: "Roboto", sans-serif;
+    font-size: 4em;
+    font-weight: bold;
+    margin-top: -13%;
+    color: #ff8800;	
+    top: 33,5%;
+    text-shadow: 0.1em 0.1em 0.2em rgba(black,black ,black , 0,5);
+    transition: color 0.3s ease;
+    }
+    
+    h1:hover {
+    color:#ff3300
+    }
+    
+    h2{
+      text-align: center;
+      color: #000000;
+      transition: color 0.2s ease;
+      font-size: 187,5%;
+    }
+    
+    h2:hover {
+      color: #ff4800;
+    }
+    
+    img {
+    position: absolute;
+    top: 3.5%;
+    left: 2%;
+    width: 8%;
+    height: auto;
+    }
+    
+    
+h3{
+    color: #ff3300;
+}
+    * {
+        padding: 0;
+        margin: 0;
+      }
+    
+      
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        min-height: 100vh;
+        font-family: Hack, monospace;
+      }
+      
+      div {
+        color:rgb(0, 0, 0);
+        text-align: center;
+        margin-top: 5%;
+        font-weight: 200;
+        font-size: 125%;
+        background-color: #ff8800;
+      }
+      
+      p {
+        margin: 0%;
+        font-size: 600%;
+        color: #000000;
+        text-transform: uppercase;
+        font-weight: 600;
+        transition: all 1s ease-in-out;
+        position: relative;
+        margin-top: -40%;
+      
+        &::before {
+          content: attr(data-item);
+          transition: all 1s ease-in-out;
+          color: #ff5100;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          width: 0;
+          overflow: hidden;
+        }
+      
+        &:hover {
+          &::before {
+            width: 100%;
+          }
+        }
+      }
+      
+      nav {
+        margin: 0%;
+    
+        padding: -5%;
+        .menuItems {
+          list-style: none;
+          display: flex;
+      
+          li {
+            margin: 50px;
+      
+            a {
+              text-decoration: none;
+              color: #000000;
+              font-size: 187.5%;
+              font-weight: 600;
+              transition: all 0.5s ease-in-out;
+              position: relative;
+              text-transform: uppercase;
+      
+              &::before {
+                content: attr(data-item);
+                transition: 0.5s;
+                color: #ff7300;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 0;
+                overflow: hidden;
+              }
+      
+              &:hover {
+                &::before {
+                  width: 100%;
+                  transition: all 0.5s ease-in-out;
+                }
+              }
+            }
+          }
+        }
+      }
+    
+    a{
+      color: inherit;
+      text-decoration: none;
+    }
+    
+    .two{
+    text-shadow:
+     -0.1px -0.1px 0 black,
+      0.1px -0.1px 0 black,
+      -0.1px 0.1px 0 black,
+      0.1px 0.1px 0 black;
+    ;
+    }
