@@ -1,0 +1,250 @@
+body {
+    font-family: sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Теперь делаем body флекс-контейнером, чтоб меню сверху прижать */
+    justify-content: flex-start; /* Выравниваем по началу, чтоб контент под меню шел */
+    align-items: center;
+    min-height: 100vh;
+    background-image: linear-gradient(45deg, #ff8800, #ff4800);
+    padding-top: 4em; /* Добавляем отступ сверху, чтоб контент не залезал под фиксированное меню */
+}
+
+header {
+    background-color: #333; /* Темный фон для меню */
+    color: #fff; /* Белый цвет текста в меню */
+    padding: 1em 20px; /* Отступы сверху, снизу и по бокам */
+    position: fixed; /* Фиксируем меню сверху, чтоб всегда было видно */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100; /* Чтоб меню было поверх всего */
+}
+
+nav {
+    width: 100%;
+}
+
+nav .menuItems {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Центрируем пункты меню */
+}
+
+nav .menuItems li {
+    margin: 0 1em; /* Отступы между пунктами меню */
+}
+
+nav .menuItems li a {
+    text-decoration: none;
+    color: #fff; /* Белый цвет ссылок */
+    font-size: 1.2em; /* Размер шрифта ссылок */
+    font-weight: bold; /* Жирный шрифт */
+    position: relative; /* Для позиционирования псевдоэлемента */
+    overflow: hidden; /* Обрезаем вылезающий псевдоэлемент */
+    padding: 0.5em 0; /* Отступы сверху и снизу ссылки */
+}
+
+nav .menuItems li a::before {
+    content: attr(data-item); /* Берем текст из атрибута data-item */
+    position: absolute;
+    top: 100%; /* Прячем псевдоэлемент под ссылкой */
+    left: 0;
+    color: #ff8800; /* Оранжевый цвет при наведении */
+    transition: transform 0.3s ease-out; /* Плавная анимация */
+}
+
+nav .menuItems li a:hover::before {
+    transform: translateY(-100%); /* Сдвигаем псевдоэлемент вверх при наведении */
+}
+
+.contact-container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 80%;
+    max-width: 600px;
+    margin-top: 20px; /* Добавил отступ сверху, чтоб не прилипало к меню */
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 2.5em;
+    animation: pulse 2s infinite alternate;
+}
+
+.contact-info p {
+    margin-bottom: 10px;
+    color: #555;
+    font-size: 1.1em;
+}
+
+.email-link, .phone-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #ff4800;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    border: 2px solid #ff4800;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.email-link:hover, .phone-link:hover {
+    background-color: #ff4800;
+    color: #fff;
+}
+
+.social-links {
+    margin-top: 20px;
+}
+
+.social-icon {
+    display: inline-block;
+    margin: 0 10px;
+    color: #333;
+    font-size: 1.5em;
+    transition: transform 0.3s ease-in-out, color 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: scale(1.2);
+    color: #ff8800;
+}
+
+.contact-form {
+    margin-top: 40px;
+}
+
+.contact-form h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+    border-color: #ff4800;
+    outline: none;
+}
+
+.contact-form textarea {
+    min-height: 100px;
+}
+
+.submit-button {
+    background-color: #ff8800;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+}
+
+.submit-button:hover {
+    background-color: #ff4800;
+    transform: scale(1.05);
+}
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+@media (max-width: 480px) {
+    header {
+        padding: 0.5em 10px; /* Уменьшаем отступы в шапке, чтоб места больше было */
+        flex-direction: column; /* Перестраиваем шапку в колонку, если что-то не влезает */
+        align-items: center; /* Центрируем элементы шапки */
+    }
+
+    nav .menuItems {
+        flex-direction: column; /* Пункты меню ставим друг под другом, а не в ряд */
+        align-items: center; /* Центрируем пункты меню */
+    }
+
+    nav .menuItems li {
+        margin: 0.5em 0; /* Уменьшаем отступы между пунктами меню */
+    }
+
+    nav .menuItems li a {
+        font-size: 1em; /* Уменьшаем шрифт в меню, чтоб не был таким огромным */
+        padding: 0.3em 0; /* Уменьшаем вертикальные отступы ссылок */
+    }
+
+    .contact-container {
+        padding: 20px; /* Уменьшаем отступы внутри основного контейнера */
+        width: 95%; /* Делаем контейнер почти на всю ширину экрана телефона */
+    }
+
+    h1 {
+        font-size: 2em; /* Уменьшаем размер главного заголовка */
+        margin-bottom: 20px; /* Уменьшаем отступ снизу */
+    }
+
+    .contact-info p {
+        font-size: 1em; /* Уменьшаем размер обычного текста */
+    }
+
+    .email-link, .phone-link {
+        font-size: 1em; /* Уменьшаем размер шрифта в ссылках на почту и телефон */
+        padding: 8px 15px; /* Уменьшаем внутренние отступы в этих ссылках */
+        margin-bottom: 15px; /* Уменьшаем отступ снизу */
+    }
+
+    .social-links {
+        margin-top: 15px; /* Уменьшаем отступ сверху у блока с соцсетями */
+    }
+
+    .social-icon {
+        font-size: 1.3em; /* Немного уменьшаем размер иконок соцсетей */
+        margin: 0 8px; /* Уменьшаем отступы между иконками */
+    }
+
+    .contact-form h2 {
+        font-size: 1.5em; /* Уменьшаем заголовок формы */
+        margin-bottom: 15px; /* Уменьшаем отступ снизу */
+    }
+
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea {
+        font-size: 0.9em; /* Уменьшаем шрифт в полях формы */
+        padding: 8px; /* Уменьшаем внутренние отступы в полях */
+        margin-bottom: 15px; /* Уменьшаем отступ снизу */
+    }
+
+    .submit-button {
+        font-size: 1em; /* Уменьшаем шрифт на кнопке отправки */
+        padding: 12px 25px; /* Уменьшаем внутренние отступы кнопки */
+    }
+}
